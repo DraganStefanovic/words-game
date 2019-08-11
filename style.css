@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box
+}
+
+body,html {
+    height: 100%;
+}
+body {    margin: 0;    background-color: #fff;    font-family: 'Poppins', sans-serif;  }
+.container {  width: 960px;    height: 600px;    margin: 50px auto;    background-color: #1c2323;    color: aliceblue;    position: relative;}
+.verticalLine { height: 600px;    position: absolute;    top:0;    left: 850px;    background: tomato;    width: 2px;}
+.display-result { position: absolute;    left: 850px;    bottom: 30px;    width: 110px;    height: 100px;    line-height: 100px;    text-align: center;    color: antiquewhite;  font-size: 28px;}
+.startBtn { position: absolute; width: 200px; height: 40px; line-height: 38px; text-align: center; font-size: 28px; background-color: chocolate; color:black; border-radius: 6px; top: 260px; left: 325px;cursor: pointer; user-select: none;}
+.line { position: absolute;    left: 0;    width: 100%;    height: 30px;    color:white; }
+span { position: absolute; background-color: #d1e04a; top: 0; left: 0; padding:  2px 10px; color: black; border: 1px solid black; border-radius: 3px;}
+
+.li-1{ top:0;}
+.li-2{ top:35px;}
+.li-3{ top:70px;}
+.li-4{ top:105px;}
+.li-5{ top:140px;}
+.li-6{ top:175px;}
+.li-7{ top:210px;}
+.li-8{ top:245px;}
+.li-9{ top:280px;}
+.li-10{ top:315px;}
+.li-11{ top:350px;}
+.li-12{ top:385px;}
+.li-13{ top:420px;}
+.li-14{ top:455px;}
+.li-15{ top:490px;}
+.typingline { position: absolute; width: 100%; height: 30px; bottom:0; left: 0; background-color: chocolate;}
+.maininput {background-color: chocolate; width: 100%; border:none; color: white; height: 30px; font-size: 18px; outline: none; }
+
+.danger {
+    background-color: #d82505;
+    color: white;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
