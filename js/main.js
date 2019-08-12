@@ -2,6 +2,7 @@
     let startBtn = $ ('.startBtn');
     let maininput = $ ('.maininput');
     let allLines = $('.line');
+    let alltext = [];
 
 
 
@@ -16,11 +17,36 @@
         let lvl = 6;
         // insert spanse 
 
+
+        maininput.on('keyup',checkInputTyping);
+
+        function checkInputTyping() {
+            let inputVal = $(this).val();
+            let self = $(this);            
+            if(alltext.includes(inputVal)){               
+                $('span').filter(function () {   
+                    console.log(this)                    
+                return $(this).text() == inputVal; 
+                                                
+                }).fadeOut(100,function (){
+                    $(this).remove();
+                   
+                })
+                self.val("");
+            }
+        }
+
+
+
+
+
+
         function insertSpans() {
           for(var i = 0; i < allLines.length; i++ ) {
               let rand = Math.floor(Math.random() * 20);
               if(rand <= lvl) {
-                  let text = chooseText();                  
+                  let text = chooseText();  
+                  alltext.push(text);                 
                   $(allLines[i]).append(`<span> ${text} </span>`);                  
               }
           }
