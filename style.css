@@ -34,9 +34,9 @@ span { position: absolute; background-color: #d1e04a; top: 0; left: 0; padding: 
 .danger {
     background-color: #d82505;
     color: white;}
-
-
-
+.typingline input {background: content-box;
+}
+    
 
 
 

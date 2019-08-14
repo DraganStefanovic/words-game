@@ -1,92 +1,96 @@
-(function(){
-    let startBtn = $ ('.startBtn');
-    let maininput = $ ('.maininput');
-    let allLines = $('.line');
-    let alltext = [];
+(function (){
+    let startBtn = $('.startBtn');
+    let maininput = $('.main-input');
+    let allline = $('.line');
+    let allText = [];
 
+    startBtn.on('click',starGame);
 
-
-
-    startBtn.on('click' , startGame);
-    function startGame(){
+    function starGame() {
         $(this).hide();
+        maininput.focus();
+
         //setup
+
         let speed = 1;
         let textLength = 3;
-        let typingWords = words.filter(word => word.length == textLength );
+        let typingWords = words.filter(word => word.length == textLength);
         let lvl = 6;
-        // insert spanse 
 
-
-        maininput.on('keyup',checkInputTyping);
-
+        maininput.on ('keyup', checkInputTyping);
         function checkInputTyping() {
             let inputVal = $(this).val();
-            let self = $(this);            
-            if(alltext.includes(inputVal)){               
-                $('span').filter(function () {   
-                    console.log(this)                    
-                return $(this).text() == inputVal; 
-                                                
-                }).fadeOut(100,function (){
+            let self = $(this);
+
+            if (allText.includes(inputVal)) {
+                $('span').filter(function(){
+                    return $(this).text() == inputVal;
+                }).css('background','blue').fadeOut(100,function(){
                     $(this).remove();
-                   
                 })
                 self.val("");
             }
+
+
+
         }
 
+        //insert spans
 
-
-
-
-
-        function insertSpans() {
-          for(var i = 0; i < allLines.length; i++ ) {
-              let rand = Math.floor(Math.random() * 20);
-              if(rand <= lvl) {
-                  let text = chooseText();  
-                  alltext.push(text);                 
-                  $(allLines[i]).append(`<span> ${text} </span>`);                  
-              }
-          }
-        }
-
+        function insertSpans()  {
+            for (var i = 0; i<allline.length; i++) {
+                let rand = Math.floor(Math.random() * 20);
+                if (rand <= lvl) {
+                    let text = chooseText()
+                    allText.push(text);
+                    $(allline[i]).append(`<span>${text}</span>`)
+                }
+            }
+           
+        }    
         insertSpans();
-        
-        function chooseText(){
+
+        function chooseText() {
             let rand = Math.floor(Math.random() * typingWords.length);
-            let savedText = typingWords[rand];
-            typingWords.splice(rand,1);             
+            typingWords.splice(rand,1);
+            let savedText = typingWords [rand];
 
-            return savedText;           
-        }  
-        
-        //animation span
-
-        let moveAll = setInterval (function(){
+            return savedText;
+        }
+        //animate spans 
+        let moveAll = setInterval(function(){
             let allSpans = $('span');
             allSpans.css({
-                left: '+=' +speed
+                left : '+=' +speed
             })
-            //testiranje
-
+            //testiranje 
             $.each(allSpans,(index,el)=> {
                 let position = $(el).position().left;
-                if (position > 850) {
+                if(position > 850) {
                     clearAllIntervals()
-                } else if (position > 700 && position <710) {
-                    $(el).addClass ('danger');
+                } else if (position > 700 && position < 710){
+                    $(el).addClass('danger');
                 }
-            }) 
+            })
+        },100)
 
-        },10) 
 
         function clearAllIntervals() {
             clearInterval(moveAll);
         }
+
+
+
+
+
+
+
+
+
         
+    } // end start game
 
-    } //end startGame
 
-})()
+}) ()
+
+
