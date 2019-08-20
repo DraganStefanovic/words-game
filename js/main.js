@@ -3,13 +3,14 @@
     let maininput = $('.main-input');
     let allline = $('.line');
     let allText = [];
+    let score = 0;
+    let displayResult = $('.displayResult');
 
     startBtn.on('click',starGame);
 
     function starGame() {
         $(this).hide();
         maininput.focus();
-
         //setup
 
         let speed = 1;
@@ -17,22 +18,28 @@
         let typingWords = words.filter(word => word.length == textLength);
         let lvl = 6;
 
+        let speedUp = setInterval(function(){
+            textLength ++;
+            typingWords = words.filter(word => word.length == textLength);
+        },20000)
+
         maininput.on ('keyup', checkInputTyping);
         function checkInputTyping() {
             let inputVal = $(this).val();
             let self = $(this);
 
             if (allText.includes(inputVal)) {
+                let index = allText.indexOf(inputVal);
+                allText.splice(index,1);
                 $('span').filter(function(){
                     return $(this).text() == inputVal;
                 }).css('background','blue').fadeOut(100,function(){
                     $(this).remove();
                 })
                 self.val("");
+                score++;
+                displayResult.html(score);
             }
-
-
-
         }
 
         //insert spans
@@ -46,7 +53,7 @@
                     $(allline[i]).append(`<span>${text}</span>`)
                 }
             }
-           
+            setTimeout(insertSpans,7000)           
         }    
         insertSpans();
 
@@ -57,7 +64,8 @@
 
             return savedText;
         }
-        //animate spans 
+        //animate spans
+        let allSpans = $('span'); 
         let moveAll = setInterval(function(){
             let allSpans = $('span');
             allSpans.css({
@@ -68,26 +76,24 @@
                 let position = $(el).position().left;
                 if(position > 850) {
                     clearAllIntervals()
+                    clearallSpans()
                 } else if (position > 700 && position < 710){
                     $(el).addClass('danger');
                 }
             })
-        },100)
-
+        },10)
 
         function clearAllIntervals() {
             clearInterval(moveAll);
+           
         }
+        function clearallSpans()  {
+            if position 
+            allSpans.remove();
 
-
-
-
-
-
-
-
-
-        
+        }
+       
+                
     } // end start game
 
 
