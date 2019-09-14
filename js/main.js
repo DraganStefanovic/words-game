@@ -83,15 +83,8 @@
             })
         },10)
 
-        function clearAllIntervals() {
-            clearInterval(moveAll);
-           
-        }
-        function clearallSpans()  {
-            if position 
-            allSpans.remove();
-
-        }
+     
+      
        
                 
     } // end start game
